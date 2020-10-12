@@ -64,6 +64,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\ChangeText.cs" />
+    <Compile Include="Assets\Scripts\ChapterManager.cs" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>E:/Project/Unity/Github/UnityCourses-Projects/TextBasedAdventureGame/Adventure/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>

@@ -8,24 +8,20 @@ public class ChangeText : MonoBehaviour
 {
     public Text _mainText;
 
-    private enum Chapters { start, forest, path_1, path_2, path_3, lion, snake, river, garden };
+    private enum Chapters {  forest, path_1, path_2, path_3, lion, snake, river, garden };
     private Chapters _presentChapter;
 
     // Start is called before the first frame update
     void Start()
     {
 
-        _presentChapter = Chapters.start;
+        _presentChapter = Chapters.forest;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (_presentChapter == Chapters.start)
-        {
-            ChapterStart();
-        }
-        else if (_presentChapter == Chapters.forest)
+        if (_presentChapter == Chapters.forest)
         {
             ChapterForest();
         }
@@ -66,11 +62,9 @@ public class ChangeText : MonoBehaviour
             " The fruits look beautiful.\n" +
             " Eat it right away, because it can cut your stomach.\n" +
             " Feed your stomach with these fruits and quench your thirst with the water in them.\n" +
-            "Press P for restart play";
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            _presentChapter = Chapters.start;
-        }
+            "";
+
+        StartCoroutine(Delay("Win")); // Run Lose Scence after lion.
     }
 
     void ChapterRiver()
@@ -78,22 +72,18 @@ public class ChangeText : MonoBehaviour
         _mainText.text = " you tired but it was worth it. Look at that deep blue river.\n" +
             " Come on, drink water and have fun as you wish. " +
             "You might even catch fish to feed your stomach\n" +
-            "Press P for restart play";
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            _presentChapter = Chapters.start;
-        }
+            "";
+
+        StartCoroutine(Delay("Win")); // Run Lose Scence after lion.
     }
 
     void ChapterSnake()
     {
         _mainText.text = "Oh my god what a big snake this is.\n Run away before poisoning us.\n" +
             " Ahh! the snake attacked and you died unfortunately... \n" +
-            "Press P for restart play";
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            _presentChapter = Chapters.start;
-        }
+            "";
+
+        StartCoroutine(Delay("Win")); // Run Lose Scence after lion.
     }
 
     void ChapterLion()
@@ -102,23 +92,12 @@ public class ChangeText : MonoBehaviour
             " It looks very strong and shouldn't notice us.\n" +
             " Let's go back. Run quickly noticed us.\n" +
             " But you couldn't escape from the lion.\n" +
-            " A very bad death\n" +
-            "Press P for restart play";
+            " A very bad death\n";
 
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            _presentChapter = Chapters.start;
-        }
+        StartCoroutine(Delay("Lose")); // Run Lose Scence after lion.
     }
 
-    void ChapterStart()
-    {
-        _mainText.text = " Hello, welcome to adventure game! \n Press enter to continue..  ";
-        if (Input.GetKeyDown(KeyCode.Return))
-        {
-            _presentChapter = Chapters.forest;
-        }
-    }
+    
     void ChapterForest()
     {
         _mainText.text = " It's so dark and scary. \n I guess this is the Dark Forest that doesn't fall out of those tongues." +
@@ -189,5 +168,11 @@ public class ChangeText : MonoBehaviour
         {
             _presentChapter = Chapters.forest;
         }
+    }
+
+    IEnumerator Delay(string _levelName)
+    {
+        yield return new WaitForSeconds(3); // Wait 3 second
+        Application.LoadLevel(_levelName);
     }
 }
