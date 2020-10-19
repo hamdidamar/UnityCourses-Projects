@@ -1,0 +1,4 @@
+#Mon Oct 19 13:50:20 EET 2020
+base.0=E\:\\Project\\Unity\\Github\\UnityCourses-Projects\\AAGame\\AA\\Temp\\gradleOut\\launcher\\build\\intermediates\\transforms\\dexMerger\\release\\0
+path.0=classes.dex
+renamed.0=classes.dex
